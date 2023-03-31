@@ -1,0 +1,19 @@
+// Live Search Filter Function
+
+const [search, setSearch] = useState("");
+
+<input
+        type="text"
+        placeholder="Search Product"
+        onChange={(event) => {
+          setSearch(event.target.value);
+          console.log(event.target.value);
+        }}
+ />
+
+
+.filter((value) => {
+          return search.toLowerCase() === ""
+            ? value
+            : value.name.toLowerCase().includes(search.toLowerCase());
+})
