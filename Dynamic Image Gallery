@@ -1,0 +1,75 @@
+// COMPONENT 
+import React, { useState } from "react";
+import { PRODUCTS } from "../PRODUCTS";
+import "./Gallery.css";
+
+const Gallery = () => {
+  const currentImage = PRODUCTS[0].image;
+  const [image, setImage] = useState(currentImage);
+  return (
+    <>
+      <div className="wrapper main-image-container">
+        <img src={image} alt="Gallery" className="main-image" />
+      </div>
+      <div className="wrapper gallery">
+        {PRODUCTS.map((value) => {
+          return (
+            <>
+              <div className="gallery-img" key={value.id}>
+                <img
+                  src={value.image}
+                  alt="Gallery"
+                  onClick={() => setImage(value.image)}
+                />
+              </div>
+            </>
+          );
+        })}
+      </div>
+    </>
+  );
+};
+
+export default Gallery;
+
+
+// CSS FILE
+.main-image-container {
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.main-image {
+  height: 300px;
+  width: 300px;
+  padding: 10px;
+  margin: 50px 0px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border-radius: 5px;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.gallery-img {
+  height: auto;
+  width: auto;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border-radius: 5px;
+}
+
+.gallery-img img {
+  height: 200px;
+  width: 200px;
+}
